@@ -1,5 +1,6 @@
 package com.student.studentapp.carrer
 
+import com.student.studentapp.user_carrer.UserCarrer
 import  jakarta.persistence.*
 
 @Entity
@@ -15,6 +16,9 @@ data class Carrer (
 
     @Column(name = "plan_estudio")
     val planEstudioId: Long? = null,
+
+    @OneToMany(mappedBy = "carrer", cascade = [CascadeType.ALL], orphanRemoval = true)
+    val userCarrers: MutableList<UserCarrer> = mutableListOf()
 )
 
 

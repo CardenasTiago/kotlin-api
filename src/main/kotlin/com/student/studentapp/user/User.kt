@@ -1,5 +1,6 @@
 package com.student.studentapp.user
 
+import com.student.studentapp.user_carrer.UserCarrer
 import jakarta.persistence.*
 
 @Entity
@@ -27,6 +28,8 @@ data class User(
     @Column(name = "username")
     val username: String,
 
+    @OneToMany(mappedBy = "user", cascade = [CascadeType.ALL], orphanRemoval = true)
+    val userCarrers: MutableList<UserCarrer> = mutableListOf()
 )
 
 data class  UserRequest(
