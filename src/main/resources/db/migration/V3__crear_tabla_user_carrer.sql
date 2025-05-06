@@ -1,7 +1,7 @@
 CREATE TABLE user_carrer (
+    id BIGSERIAL PRIMARY KEY,
     user_id BIGINT NOT NULL,
     carrer_id BIGINT NOT NULL,
-    PRIMARY KEY (user_id, carrer_id),
 
     CONSTRAINT fk_user
         FOREIGN KEY (user_id) REFERENCES app_user (id)

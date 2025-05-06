@@ -1,10 +1,14 @@
 package com.student.studentapp.user_carrer.UserCarrerId
 
+import jakarta.persistence.Column
 import jakarta.persistence.Embeddable
 import  java.io.Serializable
 
 @Embeddable
-data class UserCarrerId (
-    val UserId: Long = 0,
-    val CarrerId: Long = 0
-): Serializable
+data class UserCarrerId(
+    @Column(name = "user_id")
+    val userId: Long = 0,
+
+    @Column(name = "carrer_id")
+    val carrerId: Long = 0
+) : Serializable

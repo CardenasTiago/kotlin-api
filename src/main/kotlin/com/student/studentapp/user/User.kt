@@ -36,3 +36,8 @@ data class  UserRequest(
     val username: String,
     val password: String,
 )
+
+data class UserCarrerRequest(
+    val userId: Long,
+    val carrerId: Long
+)
