@@ -1,5 +1,6 @@
 package com.student.studentapp.carrer
 
+import com.student.studentapp.user.User
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -20,5 +21,10 @@ class CarrerController(private val carrerService: CarrerService) {
     @DeleteMapping("/{id}")
     fun delete(@PathVariable id: Long){
         return carrerService.delete(id)
+    }
+
+    @GetMapping("/{id}/users")
+    fun getCarrerUsers(@PathVariable id: Long): List<User>{
+        return carrerService.getUsersByCarrer(id)
     }
 }

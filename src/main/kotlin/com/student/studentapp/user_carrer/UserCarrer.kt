@@ -1,5 +1,6 @@
 package com.student.studentapp.user_carrer
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import com.student.studentapp.carrer.Carrer
 import com.student.studentapp.user.User
 import jakarta.persistence.*

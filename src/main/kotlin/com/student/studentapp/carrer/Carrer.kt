@@ -1,5 +1,6 @@
 package com.student.studentapp.carrer
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import com.student.studentapp.user_carrer.UserCarrer
 import  jakarta.persistence.*
 
@@ -18,6 +19,7 @@ data class Carrer (
     val planEstudioId: Long? = null,
 
     @OneToMany(mappedBy = "carrer", cascade = [CascadeType.ALL], orphanRemoval = true)
+    @JsonIgnore
     val userCarrers: MutableList<UserCarrer> = mutableListOf()
 )
 

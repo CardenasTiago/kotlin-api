@@ -33,4 +33,6 @@ class UserController(private val userService: UserService) {
     fun carrerRegister(@RequestBody request: UserCarrerRequest): UserCarrer {
         return userService.carrerRegister(request)
     }
+
+
 }

@@ -1,5 +1,6 @@
 package com.student.studentapp.user
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import com.student.studentapp.user_carrer.UserCarrer
 import jakarta.persistence.*
 
@@ -29,6 +30,7 @@ data class User(
     val username: String,
 
     @OneToMany(mappedBy = "user", cascade = [CascadeType.ALL], orphanRemoval = true)
+    @JsonIgnore
     val userCarrers: MutableList<UserCarrer> = mutableListOf()
 )
 
