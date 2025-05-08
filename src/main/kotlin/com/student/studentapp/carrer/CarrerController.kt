@@ -27,4 +27,6 @@ class CarrerController(private val carrerService: CarrerService) {
     fun getCarrerUsers(@PathVariable id: Long): List<User>{
         return carrerService.getUsersByCarrer(id)
     }
+
+    
 }
