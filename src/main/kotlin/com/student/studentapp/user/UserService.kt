@@ -4,6 +4,9 @@ import org.springframework.stereotype.Service
 import com.student.studentapp.carrer.CarrerRepository
 import com.student.studentapp.user_carrer.UserCarrer
 import com.student.studentapp.user_carrer.UserCarrerRepository
+import org.apache.coyote.Response
+import org.springframework.http.HttpStatus
+import org.springframework.web.server.ResponseStatusException
 
 
 @Service
@@ -12,8 +15,20 @@ class UserService(
     private val carrerRepository: CarrerRepository,
     private val userCarrerRepository: UserCarrerRepository
 ) {
-    fun create(user: User): User = userRepository.save(user)
-    fun list(): List<User> = userRepository.findAll()
+    fun create(user: User): User{
+        val Suser = user
+        if (Suser.name.isBlank() || Suser.email.isBlank() || Suser.username.isBlank() || Suser.password.isBlank() ||Suser.age == 0) {
+            throw ResponseStatusException(HttpStatus.BAD_REQUEST,"Faltan datos")
+        }
+        val existUser = userRepository.getByUsername(user.username)
+        if(existUser != null){
+            throw ResponseStatusException(HttpStatus.CONFLICT, "Ya existe un usuario con mismo username")
+        }
+        return userRepository.save(user)
+    }
+    fun list(): List<User> {
+       return userRepository.findAll()
+    }
     fun getById(id: Long): User {
         return userRepository.findById(id).orElseThrow {
             NoSuchElementException("Usuario no encontrado con ID: $id")

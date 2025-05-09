@@ -1,15 +1,21 @@
 package com.student.studentapp.user
 
 import com.student.studentapp.user_carrer.UserCarrer
+import org.apache.coyote.Response
+import org.hibernate.annotations.NotFound
 import org.intellij.lang.annotations.Pattern
+import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
+import org.springframework.web.server.ResponseStatusException
 
 @RestController
 @RequestMapping("/users")
 class UserController(private val userService: UserService) {
 
     @PostMapping
-    fun create(@RequestBody user: User) = userService.create(user)
+    fun create(@RequestBody user: User): User{
+        return userService.create(user)
+    }
 
     @GetMapping
     fun list() = userService.list()

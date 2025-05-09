@@ -18,8 +18,6 @@ class CarrerController(private val carrerService: CarrerService) {
         return carrerService.getById(id)
     }
 
-
-    
     @DeleteMapping("/{id}")
     fun delete(@PathVariable id: Long){
         return carrerService.delete(id)
@@ -29,6 +27,5 @@ class CarrerController(private val carrerService: CarrerService) {
     fun getCarrerUsers(@PathVariable id: Long): List<User>{
         return carrerService.getUsersByCarrer(id)
     }
-
 
 }
