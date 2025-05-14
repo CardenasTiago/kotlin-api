@@ -20,10 +20,16 @@ class UserService(
         if (Suser.name.isBlank() || Suser.email.isBlank() || Suser.username.isBlank() || Suser.password.isBlank() ||Suser.age == 0) {
             throw ResponseStatusException(HttpStatus.BAD_REQUEST,"Faltan datos")
         }
-        val existUser = userRepository.getByUsername(user.username)
-        if(existUser != null){
+        val UserUsername = userRepository.getByUsername(user.username)
+        if(UserUsername != null){
             throw ResponseStatusException(HttpStatus.CONFLICT, "Ya existe un usuario con mismo username")
         }
+
+        val UserEmial = userRepository.getByEmail(user.email)
+        if(UserEmial != null){
+            throw ResponseStatusException(HttpStatus.CONFLICT, "Ya existe un usuario con mismo email")
+        }
+
         return userRepository.save(user)
     }
     fun list(): List<User> {
@@ -41,6 +47,11 @@ class UserService(
 
     fun getByUsername(username: String): User {
         return userRepository.getByUsername(username)
+            ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario no encontrado")
+    }
+
+    fun getByEmail(email: String): User{
+        return userRepository.getByEmail(email)
             ?: throw NoSuchElementException("Usuario no encontrado")
     }
 
