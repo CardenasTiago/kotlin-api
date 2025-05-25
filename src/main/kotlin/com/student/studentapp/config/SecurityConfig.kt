@@ -34,7 +34,7 @@ class SecurityConfig {
             .cors { it.configurationSource(corsConfigurationSource()) }
             .csrf { it.disable() } // Solo para APIs stateless
             .authorizeHttpRequests {
-                it.requestMatchers("/api/**", "/users/**","/carrers/**").permitAll()
+                it.requestMatchers("/api/**", "/users/**","/carrers/**","/studentPlans/**").permitAll()
                     .anyRequest().authenticated()
             }
         return http.build()

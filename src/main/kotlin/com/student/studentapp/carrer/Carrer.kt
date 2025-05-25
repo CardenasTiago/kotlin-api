@@ -1,8 +1,8 @@
 package com.student.studentapp.carrer
 
 import com.fasterxml.jackson.annotation.JsonIgnore
+import com.student.studentapp.studentPlan.StudentPlan
 import com.student.studentapp.user_carrer.UserCarrer
-import com.student.studentapp.studentPlan.studentPlan
 import  jakarta.persistence.*
 
 @Entity
@@ -17,8 +17,8 @@ data class Carrer (
     val name: String,
 
     @OneToOne
-    @JoinColumn(name = "plan_estudio_id")
-    val planEstudioId: studentPlan? = null,
+    @JoinColumn(name = "student_plan_id")
+    val planEstudioId: StudentPlan? = null,
 
     @OneToMany(mappedBy = "carrer", cascade = [CascadeType.ALL], orphanRemoval = true)
     @JsonIgnore
