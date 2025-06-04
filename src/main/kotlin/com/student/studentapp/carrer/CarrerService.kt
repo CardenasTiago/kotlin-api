@@ -1,7 +1,7 @@
 package com.student.studentapp.carrer
 
 import org.springframework.stereotype.Service
-import com.student.studentapp.user.*
+import com.student.studentapp.student.*
 import com.student.studentapp.user_carrer.*
 
 @Service
@@ -18,9 +18,9 @@ class CarrerService(private val carrerRepository: CarrerRepository, private val 
         return carrerRepository.deleteById(id)
     }
 
-    fun getUsersByCarrer(carrerId: Long): List<User>{
+    fun getUsersByCarrer(carrerId: Long): List<Student>{
        val userCarrer = userCarrerRepository.findByCarrerId(carrerId)
-        return userCarrer.map { it.user }
+        return userCarrer.map { it.student }
     }
 
 }

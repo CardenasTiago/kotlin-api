@@ -1,10 +1,9 @@
 CREATE TABLE user_carrer (
     id BIGSERIAL PRIMARY KEY,
-    user_id BIGINT NOT NULL,
+    student_id BIGINT NOT NULL,
     carrer_id BIGINT NOT NULL,
-
-    CONSTRAINT fk_user
-        FOREIGN KEY (user_id) REFERENCES app_user (id)
+    CONSTRAINT fk_student
+        FOREIGN KEY (student_id) REFERENCES student (id)
         ON DELETE CASCADE,
 
     CONSTRAINT fk_carrer

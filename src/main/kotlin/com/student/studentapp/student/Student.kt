@@ -1,12 +1,12 @@
-package com.student.studentapp.user
+package com.student.studentapp.student
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 import com.student.studentapp.user_carrer.UserCarrer
 import jakarta.persistence.*
 
 @Entity
-@Table(name = "app_user")
-data class User(
+@Table(name = "student")
+data class Student(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
@@ -23,23 +23,16 @@ data class User(
     @Column(name = "email")
     val email: String,
 
-    @Column(name = "password")
-    val password: String,
+    @Column(name = "legajo")
+    val legajo: Int,
 
-    @Column(name = "username")
-    val username: String,
-
-    @OneToMany(mappedBy = "user", cascade = [CascadeType.ALL], orphanRemoval = true)
+    @OneToMany(mappedBy = "student", cascade = [CascadeType.ALL], orphanRemoval = true)
     @JsonIgnore
-    val userCarrers: MutableList<UserCarrer> = mutableListOf()
+    val studentCarrers: MutableList<UserCarrer> = mutableListOf()
 )
 
-data class  UserRequest(
-    val username: String,
-    val password: String,
-)
 
 data class UserCarrerRequest(
-    val userId: Long,
+    val studentId: Long,
     val carrerId: Long
 )

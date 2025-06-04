@@ -1,9 +1,8 @@
-CREATE TABLE app_user (
+CREATE TABLE student (
     id BIGSERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     lastName VARCHAR(100) NOT NULL,
     age INTEGER NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
-    password VARCHAR(100) NOT NULL,
-    username VARCHAR(100) NOT NULL
+    legajo INTEGER NOT NULL
 );

@@ -1,6 +1,6 @@
 package com.student.studentapp.carrer
 
-import com.student.studentapp.user.User
+import com.student.studentapp.student.Student
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -24,7 +24,7 @@ class CarrerController(private val carrerService: CarrerService) {
     }
 
     @GetMapping("/{id}/users")
-    fun getCarrerUsers(@PathVariable id: Long): List<User>{
+    fun getCarrerUsers(@PathVariable id: Long): List<Student>{
         return carrerService.getUsersByCarrer(id)
     }
 
