@@ -36,3 +36,5 @@ data class UserCarrerRequest(
     val studentId: Long,
     val carrerId: Long
 )
+
+
