@@ -5,4 +5,5 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface CarrerRepository: JpaRepository<Carrer, Long> {
+    fun findByName(name: String): Carrer?
 }
